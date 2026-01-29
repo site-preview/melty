@@ -1,0 +1,861 @@
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+header {
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: #E8C583;
+}
+
+header h1:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+
+/*ヘッダー*/
+
+.logo {
+  width: 60px;
+  height: auto;
+}
+
+/*ナビ*/
+.header-nav ul {
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    flex-wrap: wrap;         /* ← SPで折り返し可能にする */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-nav li {
+    padding: 0 12px;
+    position: relative;
+    white-space: nowrap;     /* ← 文字が折れないように */
+}
+
+/* 縦棒（区切り線） */
+.header-nav li + li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: #000;
+}
+
+/* リンクのスタイル */
+.header-nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+/* 流れるテキストの外枠（幅いっぱい） */
+.marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #862125;
+    color: #E8C583;
+    padding: 10px 0;
+}
+
+/* 流れるテキスト本体（エンドレス対応） */
+.marquee {
+    display: flex;              /* ← 追加：テキストを横に2つ並べるため */
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+    font-size: 16px;
+}
+
+/* テキスト間の余白（任意） */
+.marquee span {
+    padding-right: 2rem;
+}
+
+/* エンドレスで流れるアニメーション */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* ← 2つ分の幅の半分を流す */
+    }
+}
+
+/* 左→右 or 右→左の流れ */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 40px;
+  }
+}
+
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  display: block;
+}
+
+
+/*ヘッダーここまで*/
+
+/*追従ボタンここから*/
+
+.follow-btn {
+  position: fixed;
+  right: 20px;   /* 画面右からの距離 */
+  bottom: 20px;  /* 画面下からの距離 */
+  z-index: 9999; /* 最前面に表示 */
+}
+
+.follow-btn img {
+  width: 80px;   /* 好きなサイズに調整 */
+  height: auto;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.follow-btn img:hover {
+  opacity: 0.8;  /* ホバー時の軽い演出 */
+}
+
+/*追従ボタンここまで*/
+
+
+
+body {
+  background-color: #862125;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 4px;
+}
+
+.kv {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sp-only {
+  display: none;
+}
+
+
+/*背景職をうねーんって*/
+
+.block {
+  padding: 80px 20px;
+  color: #fff;
+}
+
+/* Aの背景色 */
+.block-a {
+  background: #862125;
+}
+
+/* Bの背景色（例） */
+.block-b {
+  background: #BA2626;
+}
+
+.block-d {
+  background: #862125;
+}
+
+/* 波の共通設定 */
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* Aの色と合わせる波 */
+.wave-a path {
+  fill: #BA2626; /* ← block-a と同じ色にするだけ */
+}
+.wave-b path {
+  fill: #862125; /* ← block-b と同じ色にするだけ */
+}
+
+/*背景職をうねーんってここまで*/
+
+/*youtubeサムネ並べ*/
+.responsive-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .responsive-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.responsive-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+
+/*youtubeサムネここまで*/
+
+
+
+/*SNSアイコン並べ*/
+
+.sns-ellipse {
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px 20px;
+
+  background: rgba(255, 255, 255, 0.8); /* 白っぽい透明感 */
+  border-radius: 60px; /* ← 楕円にするポイント */
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.6);
+
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.sns-ellipse img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: 0.3s;
+}
+
+.sns-ellipse img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/*SNSアイコン並べここまで*/
+
+
+
+/*フォント系*/
+
+.title-aboutme {
+  font-size: 35px;
+  font-color:#E8C583;
+  letter-spacing: 4px;
+  padding: 0 0 20px 0;
+  text-align:center;
+}
+
+.text {
+  font-size: 16px;
+  letter-spacing: 4px;
+  text-align:center;
+
+}
+
+.text-contact {
+  font-size: 16px;
+  letter-spacing: 4px;
+  margin: 0 20px;
+  text-align: center;
+}
+
+.title1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-color:#E8C583;
+  animation: fadeInUp 1s ease-out forwards;
+  text-align:center;
+}
+
+.title-contact {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 4px;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 40px
+}
+
+
+/*フォント系ここまで*/
+
+/*ニュースここから*/
+
+
+.news-section {
+  padding: 40px 20px;
+}
+
+.news-inner {
+  display: flex;
+  flex-direction: column; /* SPは縦並び */
+  gap: 20px;
+}
+
+/* PCレイアウト */
+@media screen and (min-width: 769px) {
+  .news-inner {
+    flex-direction: row; /* PCは横並び */
+    align-items: flex-start;
+  }
+
+  .news-image {
+    width: 40%;
+  }
+
+  .news-list {
+    width: 60%;
+  }
+}
+
+/* 画像 */
+.news-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* NEWS一覧 */
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 日付 */
+.news-list .date {
+  font-size: 12px;
+  color: #999;
+}
+
+/* 見出し */
+.news-list .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* VIEW MORE */
+.news-list .more {
+  font-size: 12px;
+  color: #ddd;
+  margin-top: 4px;
+}
+
+/*ニュースここまで*/
+
+.content-section-white {
+  padding: 60px 20px;
+  background-color: #f0f8ff;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.content-section {
+  padding: 30px 20px;
+}
+
+.content-section-white-2 {
+  padding: 60px 20px;
+  background-color: #f0f8ff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  margin: 40px 0;
+  gap: 20px; /* ← 間隔をあけたいときに！ */
+  box-sizing: border-box;
+}
+
+.container img {
+  height: auto;
+  width: auto;
+  max-height: 300px; /* ← 必要なら制限をかける！ */
+  object-fit: contain;
+}
+
+
+.container1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-melty {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.container-news {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+  gap: 20px; 
+  box-sizing: border-box;
+}
+
+.container-member {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+  gap: 20px; 
+  box-sizing: border-box;
+}
+
+.container-sns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+  gap: 20px; 
+  box-sizing: border-box;
+}
+
+
+.left-column {
+  width: 50%;
+  padding: 10px;
+}
+
+.right-column {
+  width: 50%;
+  padding: 10px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.number-image {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+
+/*横並び画像*/
+
+.image-row { 
+  display: flex;
+  justify-content: center; 
+  gap: 10px; 
+  margin-top: 30px;
+  padding-top: 30px;
+  flex-direction: row;
+}
+
+.image-box {
+  width: 300px;
+  text-align: center; 
+  padding-bottom: 30px
+}
+
+.image-box img {
+  width: 100%;
+}
+
+.caption-title {
+  font-size: 15px;
+  margin: 10px 0 ;
+  color: #E8C583;
+}
+
+.caption-title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.caption-text {
+  font-size: 13px;
+  color: #666;
+  text-align: left;
+  letter-spacing: 3px;
+}
+
+
+.arrow-2 {
+  margin-left: 8px;
+  color: #000; /* ピンクでかわいく！ */
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.arrow-2-heading a:hover {
+  color: #555; /* ホバー時の色もおしゃれに！ */
+}
+
+
+
+/*横並び画像ここまで*/
+
+/*ボタンここから*/
+
+.button-wrapper {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.cute-button {
+  display: inline-block;
+  padding: 10px 50px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.cute-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/*ボタンここまで*/
+
+
+/*スライダー*/
+.gallery-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 30px auto;
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.thumb {
+  width: 400px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.6);
+  border: none;
+  padding: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+.dot-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #000;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .gallery-wrapper {
+    padding: 0 10px;
+  }
+
+  .gallery-track img {
+    width: 100%;
+    max-width: 300px; 
+  }
+}
+
+
+
+/*スライダー２個目ここまで*/
+
+/*ギャラリーここから*/
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/*ギャラリーここまで*/
+
+
+
+
+/*モーションここから*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.footer {
+  background-color: #862125;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  background: linear-gradient(to right, #f0f0f0, #e0dede);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+
+}
+
+
+
+/*SP盤ここから*/
+@media (max-width: 768px) {
+
+  .text {
+    font-size: 14px;
+    line-height: 1.8 ;
+    letter-spacing: 3px;
+    padding: 0 10px;
+  }
+
+  .text-contact {
+  font-size: 14px;
+  letter-spacing: 3px;
+  line-height: 2.0;
+  margin: 0 20px;
+  text-align: left;
+}
+
+  .image-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  nav.active {
+    display: block;
+  }
+
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px 20px;
+    height: auto ;
+  }
+
+  .hamburger {
+    display: flex;
+    height: 30px;
+    align-items: center;
+  }
+
+  header h1 {
+    font-size: 10px;
+    margin: 0;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 3% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+
+.kv {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 12px;
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .sp-only {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 15px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  li {
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: 3px;
+  }
+}
+
