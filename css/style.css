@@ -29,94 +29,103 @@ header h1:hover {
 
 /*ヘッダー*/
 
+/* ヘッダー全体を左右に並べる（PC） */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* ロゴ */
 .logo {
-  width: 60px;
+  width: 80px;
   height: auto;
 }
 
-/*ナビ*/
+/* ナビ（PC） */
 .header-nav ul {
-    display: flex;
-    justify-content: center; /* 中央揃え */
-    flex-wrap: wrap;         /* ← SPで折り返し可能にする */
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .header-nav li {
-    padding: 0 12px;
-    position: relative;
-    white-space: nowrap;     /* ← 文字が折れないように */
+  padding: 0 12px;
+  position: relative;
+  white-space: nowrap;
 }
 
-/* 縦棒（区切り線） */
+/* 区切り線（PC） */
 .header-nav li + li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 16px;
-    background: #000;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 16px;
+  background: #000;
 }
 
-/* リンクのスタイル */
 .header-nav a {
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
 }
 
-/* 流れるテキストの外枠（幅いっぱい） */
+@media screen and (max-width: 600px) {
+
+  /* ロゴ上・メニュー下に変更 */
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ナビを縦並びに */
+  .header-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+/*ヘッダーここまで*/
+
+/*流れる帯*/
+
 .marquee-wrap {
-    width: 100%;
-    overflow: hidden;
-    background: #862125;
-    color: #E8C583;
-    padding: 10px 0;
+  overflow: hidden;
+  width: 100%;
+  background: #fff; /* 必要なら背景色つけてOK */
 }
 
-/* 流れるテキスト本体（エンドレス対応） */
 .marquee {
-    display: flex;              /* ← 追加：テキストを横に2つ並べるため */
-    white-space: nowrap;
-    animation: marquee 15s linear infinite;
-    font-size: 16px;
+  display: flex;
+  width: max-content;
+  animation: marquee 7s linear infinite;
 }
 
-/* テキスト間の余白（任意） */
-.marquee span {
-    padding-right: 2rem;
+.marquee-img {
+  height: 20px; /* 好きなサイズに調整 */
+  margin-right: 40px; /* 画像の間隔 */
+  flex-shrink: 0;
+  margin: 10px
 }
 
-/* エンドレスで流れるアニメーション */
 @keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%); /* ← 2つ分の幅の半分を流す */
-    }
-}
-
-/* 左→右 or 右→左の流れ */
-@keyframes marquee {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-
-@media screen and (max-width: 768px) {
-  .logo {
-    width: 40px;
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
+
+/*流れる帯*/
+
+
+
 
 
 .hamburger {
@@ -182,6 +191,8 @@ body {
 .block {
   padding: 80px 20px;
   color: #fff;
+  position: relative;
+  z-index: 1;
 }
 
 /* Aの背景色 */
@@ -194,29 +205,51 @@ body {
   background: #BA2626;
 }
 
-.block-d {
-  background: #862125;
-}
-
 /* 波の共通設定 */
 .wave-divider {
   width: 100%;
   overflow: hidden;
   line-height: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .wave-divider svg {
   display: block;
   width: 100%;
   height: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.wave-custom {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-custom svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.wave-custom path {
+  fill: #BA2626; /* ← 好きな色に変えてOK（濃い赤） */
 }
 
 /* Aの色と合わせる波 */
 .wave-a path {
-  fill: #BA2626; /* ← block-a と同じ色にするだけ */
+  fill: #862125; /* ← block-a と同じ色にするだけ */
 }
 .wave-b path {
-  fill: #862125; /* ← block-b と同じ色にするだけ */
+  fill: #BA2626 !important;
+ /* ← block-b と同じ色にするだけ */
+}
+
+/* 薄い赤 → 濃い赤 専用の波（絶対に上書きされない） */
+.wave-ba path {
+  fill: #862125 !important; /* 濃い赤（block-a） */
 }
 
 /*背景職をうねーんってここまで*/
@@ -554,6 +587,7 @@ body {
 
 /*ボタンここから*/
 
+
 .button-wrapper {
   text-align: center;
   margin-top: 30px;
@@ -561,17 +595,19 @@ body {
 
 .cute-button {
   display: inline-block;
-  padding: 10px 50px;
-  border: 1px solid #000;
-  border-radius: 3px;
-  text-decoration: none;
-  color: #000;
-  transition: all 0.3s ease;
 }
 
-.cute-button:hover {
-  background-color: #000;
-  color: #fff;
+.button-image {
+  width: 100%;
+  max-width: 250px; /* ← PCでは大きく、SPでは縮む */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: opacity 0.3s ease;
+}
+
+.cute-button:hover .button-image {
+  opacity: 0.7;
 }
 
 /*ボタンここまで*/
@@ -582,6 +618,7 @@ body {
   display: grid;
   grid-template-columns: 1fr; /* SP: 1カラム */
   gap: 16px;
+  margin: 20px auto;
 }
 
 @media (min-width: 768px) {
@@ -698,15 +735,36 @@ body {
   box-shadow: 0 14px 30px rgba(0,0,0,0.22);
 }
 
-.sns-icon {
+.tiktok-icon {
   width: 90px;
   height: 90px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 16px;
   border: 3px solid #fff;
-  box-shadow: 0 0 0 4px #ff3b5c; /* snsっぽい縁取り */
+  box-shadow: 0 0 0 4px #000; /* snsっぽい縁取り */
 }
+
+.insta-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 4px #F58529; /* snsっぽい縁取り */
+}
+
+.youtube-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 3px solid #FF0000;
+  box-shadow: 0 0 0 4px #FF0000; /* snsっぽい縁取り */
+}
+
 
 .sns-username {
   font-size: 20px;
@@ -721,10 +779,25 @@ body {
   margin-bottom: 16px;
 }
 
-.sns-link {
+.tiktok-link {
   display: inline-block;
   padding: 10px 20px;
-  background: #ff3b5c;
+  background: #000;
+  color: #00F2EA;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.tiktok-link:hover {
+  background: #00C9C3;
+}
+
+.insta-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #F58529, #DD2A7B);
   color: #fff;
   border-radius: 30px;
   text-decoration: none;
@@ -732,9 +805,25 @@ body {
   transition: background 0.2s ease;
 }
 
-.sns-link:hover {
-  background: #e62f50;
+.insta-link:hover {
+  background: #C2185B;
 }
+	
+.youtube-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #FF0000;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.youtube-link:hover {
+  background: #C2185B;
+}
+
 
 /*SNSのプロフィールカードここまで*/
 
