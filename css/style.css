@@ -465,6 +465,12 @@ body {
   box-sizing: border-box;
 }
 
+.container-contact {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
 
 .left-column {
   width: 50%;
@@ -569,6 +575,169 @@ body {
 }
 
 /*ボタンここまで*/
+
+/*動画サムネここから*/
+
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* SP: 1カラム */
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.video-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.thumb {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* 再生ボタン（丸） */
+.play-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.play-icon::before {
+  content: "";
+  width: 70px;
+  height: 70px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  position: absolute;
+}
+
+/* 三角の再生マーク */
+.play-icon::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 22px solid white;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  position: absolute;
+  margin-left: 6px;
+}
+
+/* キランの光 */
+.sparkle {
+  position: absolute;
+  width: 130%;
+  height: 45%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.9) 50%,
+    transparent 100%
+  );
+  top: -60%;
+  left: -70%;
+  transform: rotate(25deg);
+  opacity: 0;
+}
+
+/* キランのアニメーション */
+@keyframes sparkle-move {
+  0% {
+    transform: translateX(0) rotate(25deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(220%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+.video-item.sparkle-active .sparkle {
+  animation: sparkle-move 0.9s ease-out;
+}
+
+/*動画サムネここまで*/
+
+
+/*SNSのプロフィールカード*/
+.sns-card {
+  width: 320px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 20px auto;
+  text-align: center;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sns-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+}
+
+.sns-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 4px #ff3b5c; /* snsっぽい縁取り */
+}
+
+.sns-username {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.sns-followers {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 16px;
+}
+
+.sns-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #ff3b5c;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.sns-link:hover {
+  background: #e62f50;
+}
+
+/*SNSのプロフィールカードここまで*/
+
 
 
 /*スライダー*/
