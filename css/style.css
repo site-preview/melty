@@ -300,20 +300,37 @@ body::before {
 .title1 {
   font-size: 32px;
   font-weight: 800;
-  letter-spacing: 0.15em;
-  color: #ff5fa2; /* 平成ピンク */
+  letter-spacing: 0.18em;
+  color: #862125; /* メインのエンジ */
+
+  background: linear-gradient(
+    135deg,
+    rgba(134, 33, 37, 0.18),
+    rgba(134, 33, 37, 0.08),
+    rgba(255, 255, 255, 0.45)
+  );
+
+  padding: 10px 28px;
+  border-radius: 30px; /* 雑誌の見出しっぽい */
+
+  border: 1.5px solid rgba(134, 33, 37, 0.35);
+
   text-shadow:
-    2px 2px 0 #fff,
-    4px 4px 0 rgba(0,0,0,0.15);
-  background: linear-gradient(180deg, #fff 0%, #ffe6f1 100%);
-  padding: 8px 20px;
-  border-radius: 12px;
-  border: 2px solid #ff9acb;
-  display: inline-block;
+    1px 1px 0 rgba(255,255,255,0.8),
+    3px 3px 0 rgba(0,0,0,0.12);
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.18),
+    inset 0 0 16px rgba(255, 255, 255, 0.7);
+
+  color: #ffffff;
+
+  text-shadow:
+    0 1px 0 #f5e6b3,        /* 明るいゴールドの縁 */
+    0 3px 6px rgba(134,33,37,0.6), /* エンジ影でなじませ */
+    2px 2px 0 #c9a24d;     /* 平成っぽい金影 */
+
 }
-
-
-
 
 
 
@@ -322,29 +339,29 @@ body::before {
 /*SNSアイコン並べ*/
 
 .sns-ellipse {
-  max-width: 600px;
-  margin: auto;
-  padding: 22px 28px;
+  position: relative;
 
-  /* 薄ピンク×透明感 */
-  background: linear-gradient(
-    135deg,
-    rgba(255, 230, 230, 0.85),
-    rgba(247, 202, 202, 0.85),
-    rgba(255, 236, 236, 0.85)
-  );
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 36px;
 
-  border-radius: 60px;
+  background: #ffffff;
+  border: 3px solid #862125;
 
-  /* 浮いて見える影 */
+  border-radius: 40px;
+
   box-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.18),
-    inset 0 0 18px rgba(255, 255, 255, 0.7);
+    0 10px 22px rgba(0,0,0,0.25);
 
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 32px;
 }
+
+
+
+
+
 
 .sns-ellipse img {
   width: 50px;
@@ -932,7 +949,6 @@ body::before {
 }
 
 .thumb {
-  width: 400px;
   flex-shrink: 0;
   scroll-snap-align: start;
   cursor: pointer;
