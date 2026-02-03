@@ -292,19 +292,54 @@ body::before {
 
 /*youtubeサムネここまで*/
 
+.container-sns {
+  position: relative;
+  display: inline-block;
+}
+
+.title1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #ff5fa2; /* 平成ピンク */
+  text-shadow:
+    2px 2px 0 #fff,
+    4px 4px 0 rgba(0,0,0,0.15);
+  background: linear-gradient(180deg, #fff 0%, #ffe6f1 100%);
+  padding: 8px 20px;
+  border-radius: 12px;
+  border: 2px solid #ff9acb;
+  display: inline-block;
+}
+
+
+
+
+
+
 
 
 /*SNSアイコン並べ*/
 
 .sns-ellipse {
-  width: 80%;
   max-width: 600px;
   margin: auto;
-  padding: 20px 20px;
+  padding: 22px 28px;
 
-  background: rgba(255, 255, 255, 0.8); /* 白っぽい透明感 */
-  border-radius: 60px; /* ← 楕円にするポイント */
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.6);
+  /* 薄ピンク×透明感 */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 230, 230, 0.85),
+    rgba(247, 202, 202, 0.85),
+    rgba(255, 236, 236, 0.85)
+  );
+
+  border-radius: 60px;
+
+  /* 浮いて見える影 */
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.18),
+    inset 0 0 18px rgba(255, 255, 255, 0.7);
 
   display: flex;
   justify-content: center;
@@ -483,7 +518,39 @@ body::before {
   display: flex;
   flex-direction: column;
   margin: 30px;
+  text-align: center;
 }
+
+/* メインロゴ */
+.title-aboutme {
+  font-size: clamp(56px, 9vw, 110px);
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: #fff;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+/* 平成感：うっすら影 */
+.title-aboutme::after {
+  content: "MELTY";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(0,0,0,0.25);
+  z-index: -1;
+  filter: blur(2px);
+}
+
+/* サブコピー（雑誌の副題） */
+.container-melty .text {
+  font-size: 14px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+
 
 .container-news {
   display: flex;
