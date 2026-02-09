@@ -73,6 +73,45 @@ header h1:hover {
 }
 /* ===== ローディング全体ここまで ===== */
 
+/* ===== てくてくアニメーション ===== */
+
+.walk-area {
+  position: relative;
+  height: 60px;
+  margin: 10px auto 20px;
+  width: 200px; /* MELty文字幅に近づけると◎ */
+  overflow: hidden;
+}
+
+.walk-char {
+  position: absolute;
+  bottom: 0;
+  left: -60px;
+  width: 50px;
+
+  animation: walkMelty 6s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes walkMelty {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(260px);
+    opacity: 0;
+  }
+}
+
+
+/* ===== てくてくアニメーションここまで ===== */
 
 
 /*ヘッダー*/
@@ -201,6 +240,9 @@ header {
   right: 20px;   /* 画面右からの距離 */
   bottom: 20px;  /* 画面下からの距離 */
   z-index: 9999; /* 最前面に表示 */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
 }
 
 .follow-btn img {
@@ -212,6 +254,11 @@ header {
 
 .follow-btn img:hover {
   opacity: 0.8;  /* ホバー時の軽い演出 */
+}
+
+body.loaded .follow-btn {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /*追従ボタンここまで*/
