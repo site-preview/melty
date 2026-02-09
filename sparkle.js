@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   items.forEach((item) => observer.observe(item));
 });
 
-
 // ============================
 // ② ローディング本体制御（時間ここだけ）
 // ============================
@@ -33,10 +32,11 @@ window.addEventListener('load', () => {
 
   setTimeout(() => {
     loading.classList.add('loaded');
+    document.body.classList.add('loaded'); // ← ★ここに移動！
 
     setTimeout(() => {
       loading.style.display = 'none';
     }, 1200);
-  }, 2000); // ← 表示時間（ここ調整）
+  }, 2000); // ← ロゴ表示時間（1〜2秒でここ調整）
 });
 
