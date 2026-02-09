@@ -27,6 +27,54 @@ header h1:hover {
 }
 
 
+/* ===== ローディング全体 ===== */
+#loading {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+
+#loading.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-logo-img {
+  width: min(70vw, 360px);
+  opacity: 0;
+  animation: logoFadeIn 1.2s ease forwards;
+  z-index: 2;
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 粒子用 */
+#sparkle-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+/* ===== ローディング全体ここまで ===== */
+
+
+
 /*ヘッダー*/
 
 /* ヘッダー全体を左右に並べる（PC） */
