@@ -6,6 +6,20 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+
 
 header {
   background-color: #fff;
@@ -1315,6 +1329,461 @@ body::before {
     font-size: 12px;
     line-height: 1.4;
     letter-spacing: 3px;
+  }
+}
+
+
+/*メンバー紹介ページV2*/
+
+.member-spread {
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 60px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+
+  background: #ffffff;
+  border: 2px solid #862125;
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.15);
+}
+
+.photo-frame {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.photo-frame img {
+  width: 100%;
+  display: block;
+}
+
+.spread-profile {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spread-profile li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 0;
+  border-bottom: 1px solid #f2c7cb;
+}
+
+.spread-profile span {
+  background: #862125;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+
+.spread-profile strong {
+  font-size: 16px;
+  color: #333;
+}
+
+.member-spread::after {
+  content: "✦";
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  font-size: 22px;
+  color: #d4af37;
+}
+
+@media (max-width: 768px) {
+  .member-spread {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+
+  .photo-frame {
+    transform: rotate(0);
+  }
+}
+
+.member-sns {
+  margin-top: 40px;
+  text-align: right;
+}
+
+.member-sns img {
+  width: 40px;
+  height: auto;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+
+
+/*メンバー紹介ページV2ここまで*/
+
+/*メンバー紹介ページのKV①ここから*/
+
+.member-kv-v3 {
+  padding: 120px 8%;
+  background: #f4f4f4;
+}
+
+.kv-wrapper {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  min-height: 600px;
+}
+
+.kv-image {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+}
+
+.kv-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-left {
+  width: 320px;
+  top: 80px;
+  left: 0;
+  z-index: 1;
+}
+
+.image-right {
+  width: 520px;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.kv-title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: clamp(60px, 8vw, 120px);
+  letter-spacing: 0.2em;
+  font-weight: 300;
+
+  color: #2b2b2b;
+  font-family: 'Poppins', sans-serif;
+
+  z-index: 3;
+}
+
+.kv-title {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+
+  .kv-wrapper {
+    min-height: auto;
+  }
+
+  .kv-image {
+    position: static;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .kv-title {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+/*メンバー紹介ページのKV②ここから*/
+
+.member-kv-clean {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  min-height: 90vh;
+  background: #e9e5df;
+}
+
+
+.kv-left {
+  overflow: hidden;
+}
+
+.kv-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.kv-right {
+  background: #f6f4f1;
+  display: flex;
+  align-items: center;
+  padding: 60px;
+}
+
+.kv-info {
+  width: 100%;
+}
+
+.kv-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 36px;
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.kv-sub {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+.kv-meta p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.kv-sns {
+  margin-top: 40px;
+}
+
+.kv-sns a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #222;
+  transition: 0.3s ease;
+}
+
+.kv-sns img {
+  width: 20px;
+}
+
+.kv-sns a:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .member-kv-clean {
+    grid-template-columns: 1fr;
+  }
+
+  .kv-right {
+    padding: 40px 25px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/*メンバー紹介ページのKVここから*/
+
+.member-kv {
+  position: relative;
+  padding: 120px 8%;
+  background: #f9f7f6;
+  overflow: hidden;
+}
+
+.kv-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 300px 220px;
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.kv-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.kv-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.6s ease;
+}
+
+.kv-photo:hover img {
+  transform: scale(1.05);
+}
+
+.photo-main {
+  grid-row: 1 / 3;
+}
+
+.photo-sub1 {
+  grid-column: 2 / 3;
+}
+
+.photo-sub2 {
+  grid-column: 1 / 2;
+  height: 200px;
+}
+
+.photo-sub3 {
+  grid-column: 2 / 3;
+  height: 200px;
+}
+
+.kv-text {
+  position: absolute;
+  bottom: 80px;
+  left: 10%;
+}
+
+.kv-name {
+  font-size: clamp(48px, 6vw, 40px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #862125;
+  margin: 0;
+}
+
+.kv-tagline {
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: #444;
+}
+
+.member-kv::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(rgba(134,33,37,0.15), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+
+  .kv-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .photo-main {
+    grid-row: auto;
+  }
+
+  .kv-text {
+    position: static;
+    margin-top: 40px;
+    text-align: center;
+  }
+}
+
+
+/*お問い合わせページここから*/
+
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+}
+
+.contact-box {
+  background: #ffffff;
+  width: 100%;
+  max-width: 600px;
+  padding: 60px 50px;
+  border-radius: 12px;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 0.2em;
+  margin-bottom: 40px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #b3002d;
+}
+
+.contact-btn {
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  background: #111;
+  color: #fff;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.contact-btn:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .contact-box {
+    padding: 40px 25px;
   }
 }
 
