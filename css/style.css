@@ -507,7 +507,17 @@ body::before {
 
 /*SNSアイコン並べここまで*/
 
-
+.viewmore {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 4px;
+  transition: 0.3s;
+}
 
 /*フォント系*/
 
@@ -620,6 +630,7 @@ body::before {
   font-size: 12px;
   color: #ddd;
   margin-top: 4px;
+  text-decoration: underline;
 }
 
 /*ニュースここまで*/
@@ -781,16 +792,36 @@ body::before {
 .image-box {
   width: 300px;
   text-align: center; 
-  padding-bottom: 30px
+  padding-bottom: 30px;
+  position: relative;
 }
 
-.image-box img {
+/* メイン画像だけ100% */
+.main-img {
   width: 100%;
+  display: block;
+}
+
+/* サブ画像 */
+.sub-img {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 60px;
+
+  animation: floatMove 3s ease-in-out infinite;
+}
+
+/* ふわふわ */
+@keyframes floatMove {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
 }
 
 .caption-title {
-  font-size: 15px;
-  margin: 10px 0 ;
+  font-size: 24px;
+  margin: 5px 0 ;
   color: #E8C583;
 }
 
@@ -799,6 +830,22 @@ body::before {
   text-decoration: none;
 }
 
+
+.caption-title span {
+  display: inline-block;
+  opacity: 0;
+}
+
+.caption-title.active span {
+  animation: bounceUp 0.6s ease forwards;
+}
+
+@keyframes bounceUp {
+  0% { transform: translateY(30px); opacity: 0; }
+  60% { transform: translateY(-12px); opacity: 1; }
+  80% { transform: translateY(4px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
 .caption-text {
   font-size: 13px;
   color: #666;
