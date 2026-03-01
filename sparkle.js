@@ -104,3 +104,41 @@ document.addEventListener("DOMContentLoaded", function () {
   observer.observe(sns);
 
 });
+
+// ============================
+// 文字はね
+// ============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const captions = document.querySelectorAll(".caption-title");
+
+  captions.forEach(title => {
+
+    // ① 文字を分解
+    const text = title.textContent.trim();
+    title.textContent = "";
+
+    text.split("").forEach((char, index) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.animationDelay = index * 0.08 + "s";
+      title.appendChild(span);
+    });
+
+    // ② スクロール監視
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    }, {
+      threshold: 0.4   // ← ここ低めが安定
+    });
+
+    observer.observe(title);
+
+  });
+
+});
