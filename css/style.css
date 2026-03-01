@@ -467,21 +467,42 @@ body::before {
   gap: 32px;
 }
 
-
-
-
-
-
+/* 初期状態（バラバラ） */
 .sns-ellipse img {
   width: 50px;
   height: 50px;
   object-fit: contain;
-  transition: 0.3s;
 }
 
 .sns-ellipse img:hover {
   transform: scale(1.1);
   opacity: 0.8;
+}
+
+/* 初期位置 */
+.sns-ellipse a {
+  display: inline-block;
+  opacity: 0;
+  transition: 0.9s ease;
+}
+
+/* 四方八方 */
+.sns-ellipse a:nth-child(1) {
+  transform: translate(-150px, -100px);
+}
+
+.sns-ellipse a:nth-child(2) {
+  transform: translate(150px, -100px);
+}
+
+.sns-ellipse a:nth-child(3) {
+  transform: translate(0, 150px);
+}
+
+/* 集合 */
+.sns-ellipse.active a {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 /*SNSアイコン並べここまで*/
@@ -977,7 +998,7 @@ body::before {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 16px;
-  border: 3px solid #FF0000;
+  border: 3px solid #fff;
   box-shadow: 0 0 0 4px #FF0000; /* snsっぽい縁取り */
 }
 
@@ -1896,5 +1917,23 @@ body::before {
 .policy-text p {
   margin-top: 10px;
   font-size: 14px;
+}
+
+/* タイトルアニメーション */
+.animate-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animate-title.active span {
+  animation: floatUp 0.6s ease forwards;
+}
+
+@keyframes floatUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
