@@ -40,3 +40,46 @@ window.addEventListener('load', () => {
   }, 2000); // ← ロゴ表示時間（1〜2秒でここ調整）
 });
 
+// ============================
+// タイトルアニメーション
+// ============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const targets = document.querySelectorAll(".animate-title");
+
+  if (!targets.length) return; // ← これ重要
+
+  targets.forEach(target => {
+
+    const text = target.textContent.trim();
+    target.textContent = "";
+
+    text.split("").forEach((char, index) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.display = "inline-block";
+      span.style.opacity = "0";
+      span.style.transform = "translateY(20px)";
+      span.style.transition = "0.6s ease";
+      span.style.transitionDelay = index * 0.05 + "s";
+      target.appendChild(span);
+    });
+
+    const titleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const spans = entry.target.querySelectorAll("span");
+          spans.forEach(span => {
+            span.style.opacity = "1";
+            span.style.transform = "translateY(0)";
+          });
+        }
+      });
+    }, { threshold: 0.6 });
+
+    titleObserver.observe(target);
+
+  });
+
+});
