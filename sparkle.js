@@ -83,3 +83,24 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+// ============================
+// SNS集合アニメーション
+// ============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const sns = document.querySelector(".sns-ellipse");
+  if (!sns) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sns.classList.add("active");
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(sns);
+
+});
