@@ -1198,6 +1198,25 @@ body::before {
 
 }
 
+.footer-links {
+  margin: 8px;
+}
+
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 0.6;
+}
+
+.divider {
+  margin: 0 8px;
+  color: #aaa;
+}
+
 
 
 /*SP盤ここから*/
@@ -1860,4 +1879,22 @@ body::before {
   color: #fff;
 }
 
+/*policyページここから*/
+.policy-text {
+  margin-top: 30px;
+  line-height: 1.9;
+  text-align: left;
+}
+
+.policy-text h3 {
+  margin-top: 35px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.policy-text p {
+  margin-top: 10px;
+  font-size: 14px;
+}
 
