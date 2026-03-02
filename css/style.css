@@ -796,10 +796,31 @@ body::before {
   position: relative;
 }
 
-/* メイン画像だけ100% */
 .main-img {
   width: 100%;
   display: block;
+  opacity: 0;
+}
+
+/* 発火用 */
+.main-img.active {
+  animation: slideFromTopLeft 0.9s ease forwards;
+}
+
+/* 左上から */
+@keyframes slideFromTopLeft {
+  0% {
+    transform: translate(-80px, -80px) scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: translate(10px, 10px) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
 }
 
 /* サブ画像 */
@@ -809,14 +830,36 @@ body::before {
   right: 15px;
   width: 60px;
 
-  animation: floatMove 3s ease-in-out infinite;
+  opacity: 0;
 }
 
-/* ふわふわ */
+/* 右から登場（1回） */
+.sub-img.active {
+  animation: slideIn 0.8s ease forwards;
+}
+
+/* ふわふわ追加（重ねる） */
+.sub-img.active.float {
+  animation:
+    slideIn 0.8s ease forwards,
+    floatMove 3s ease-in-out 0.8s infinite;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @keyframes floatMove {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+  0%   { transform: translateX(0) translateY(0); }
+  50%  { transform: translateX(0) translateY(-10px); }
+  100% { transform: translateX(0) translateY(0); }
 }
 
 .caption-title {
@@ -895,6 +938,33 @@ body::before {
 }
 
 /*ボタンここまで*/
+
+/* CTAここから */
+.cta-box {
+  display: inline-block;
+  padding: 14px 36px;
+
+  background: #E8C583;
+  color: #862125;
+
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: none;
+
+  border-radius: 8px;   /* ← 楕円じゃない控えめ丸 */
+  box-shadow: 6px 6px 0 #862125;
+
+  transition: 0.2s ease;
+}
+
+/* ホバーで押した感じ */
+.cta-box:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 #862125;
+}
+
+/* CTAここまで */
+
 
 /*動画サムネここから*/
 
