@@ -142,3 +142,55 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+// ============================
+// メンバー画像ばうんす
+// ============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const subImages = document.querySelectorAll(".sub-img");
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        // ① 右から登場
+        entry.target.classList.add("active");
+
+        // ② 少し後にふわふわ追加
+        setTimeout(() => {
+          entry.target.classList.add("float");
+        }, 800);
+
+        // ③ 1回だけで止める
+        observer.unobserve(entry.target);
+      }
+
+    });
+  }, { threshold: 0.3 });
+
+  subImages.forEach(img => observer.observe(img));
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const targets = document.querySelectorAll(".main-img, .sub-img");
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("active");
+
+        observer.unobserve(entry.target);
+      }
+
+    });
+  }, { threshold: 0.3 });
+
+  targets.forEach(el => observer.observe(el));
+
+});
