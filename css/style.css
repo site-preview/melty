@@ -701,12 +701,22 @@ body::before {
   filter: blur(2px);
 }
 
-/* サブコピー（雑誌の副題） */
 .container-melty .text {
   font-size: 14px;
   letter-spacing: 0.5em;
-  text-transform: uppercase;
   color: rgba(255,255,255,0.85);
+}
+
+.container-melty .readtext {
+  font-size: 18px;
+  letter-spacing: 0.5em;
+  color: rgba(255,255,255,0.85);
+}
+
+.container-melty .readtext-2 {
+  font-size: 12px;
+  color: rgba(255,255,255,0.85);
+  padding: 30px 0;
 }
 
 
