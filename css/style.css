@@ -1997,6 +1997,22 @@ body::before {
   opacity: 0.5;
 }
 
+.member-back {
+  display: inline-block;
+  margin-bottom: 50px;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 4px;
+  transition: 0.3s;
+}
+
+.member-back:hover {
+  opacity: 0.5;
+}
+
 .news-date {
   font-size: 13px;
   letter-spacing: 0.25em;
