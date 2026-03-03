@@ -689,6 +689,18 @@ body::before {
   position: relative;
 }
 
+/* デフォルト（PC表示） */
+.pc-only {
+  display: inline;
+}
+
+/* SP表示 */
+@media screen and (max-width: 600px) {
+  .pc-only {
+    display: none;
+  }
+}
+
 /* 平成感：うっすら影 */
 .title-aboutme::after {
   content: "MELTY";
@@ -714,7 +726,7 @@ body::before {
 }
 
 .container-melty .readtext-2 {
-  font-size: clamp(10px, 2vw, 16px);
+  font-size: clamp(14px, 2vw, 16px);
   color: rgba(255,255,255,0.85);
   padding: 30px 0;
 }
