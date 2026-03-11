@@ -1,196 +1,170 @@
 // ============================
-// ① スクロール時スパークル
+// ローディング
 // ============================
-document.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.video-item');
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          el.classList.add('sparkle-active');
+window.addEventListener("load", () => {
 
-          setTimeout(() => {
-            el.classList.remove('sparkle-active');
-          }, 900);
-        }
-      });
-    },
-    { threshold: 0.6 }
-  );
-
-  items.forEach((item) => observer.observe(item));
-});
-
-// ============================
-// ② ローディング本体制御（時間ここだけ）
-// ============================
-window.addEventListener('load', () => {
-  const loading = document.getElementById('loading');
+  const loading = document.getElementById("loading");
   if (!loading) return;
 
   setTimeout(() => {
-    loading.classList.add('loaded');
-    document.body.classList.add('loaded'); // ← ★ここに移動！
+
+    loading.classList.add("loaded");
+    document.body.classList.add("loaded");
 
     setTimeout(() => {
-      loading.style.display = 'none';
+      loading.style.display = "none";
     }, 1200);
-  }, 2000); // ← ロゴ表示時間（1〜2秒でここ調整）
+
+  }, 2000);
+
 });
 
+
 // ============================
-// タイトルアニメーション
+// アニメーション管理
 // ============================
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const targets = document.querySelectorAll(".animate-title");
+  const observer = new IntersectionObserver((entries, observer) => {
 
-  if (!targets.length) return; // ← これ重要
+    entries.forEach(entry => {
 
-  targets.forEach(target => {
+      if (!entry.isIntersecting) return;
 
-    const text = target.textContent.trim();
-    target.textContent = "";
+      const el = entry.target;
 
-    text.split("").forEach((char, index) => {
+      // ============================
+      // スパークル
+      // ============================
+
+      if (el.classList.contains("video-item")) {
+
+        el.classList.add("sparkle-active");
+
+        setTimeout(() => {
+          el.classList.remove("sparkle-active");
+        }, 900);
+
+      }
+
+
+      // ============================
+      // SNS集合
+      // ============================
+
+      if (el.classList.contains("sns-ellipse")) {
+
+        el.classList.add("active");
+
+      }
+
+
+      // ============================
+      // メンバー画像
+      // ============================
+
+      if (el.classList.contains("main-img") || el.classList.contains("sub-img")) {
+
+        el.classList.add("active");
+
+        if (el.classList.contains("sub-img")) {
+
+          setTimeout(() => {
+            el.classList.add("float");
+          }, 800);
+
+        }
+
+      }
+
+
+      // ============================
+      // MELtyタイトル
+      // ============================
+
+      if (el.classList.contains("title-aboutme")) {
+
+        el.classList.add("show");
+
+      }
+
+      observer.unobserve(el);
+
+    });
+
+  }, { threshold: 0.3 });
+
+
+// ============================
+// Observer登録
+// ============================
+
+document.querySelectorAll(
+  ".video-item, .sns-ellipse, .main-img, .sub-img"
+).forEach(el => observer.observe(el));
+
+
+// MELtyタイトルはローディング後に登録
+window.addEventListener("load", () => {
+
+  setTimeout(() => {
+
+    document.querySelectorAll(".title-aboutme")
+      .forEach(el => observer.observe(el));
+
+  }, 2300);
+
+});
+
+  // ============================
+  // タイトル文字アニメ
+  // ============================
+
+  const titles = document.querySelectorAll(".animate-title");
+
+  titles.forEach(title => {
+
+    const text = title.textContent.trim();
+    title.textContent = "";
+
+    text.split("").forEach((char, i) => {
+
       const span = document.createElement("span");
       span.textContent = char;
+
       span.style.display = "inline-block";
       span.style.opacity = "0";
       span.style.transform = "translateY(20px)";
       span.style.transition = "0.6s ease";
-      span.style.transitionDelay = index * 0.05 + "s";
-      target.appendChild(span);
+      span.style.transitionDelay = i * 0.05 + "s";
+
+      title.appendChild(span);
+
     });
 
-    const titleObserver = new IntersectionObserver((entries) => {
+    const titleObserver = new IntersectionObserver(entries => {
+
       entries.forEach(entry => {
+
         if (entry.isIntersecting) {
-          const spans = entry.target.querySelectorAll("span");
-          spans.forEach(span => {
+
+          entry.target.querySelectorAll("span").forEach(span => {
+
             span.style.opacity = "1";
             span.style.transform = "translateY(0)";
+
           });
+
         }
+
       });
+
     }, { threshold: 0.6 });
 
-    titleObserver.observe(target);
+    titleObserver.observe(title);
 
   });
-
-});
-
-// ============================
-// SNS集合アニメーション
-// ============================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const sns = document.querySelector(".sns-ellipse");
-  if (!sns) return;
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        sns.classList.add("active");
-      }
-    });
-  }, { threshold: 0.5 });
-
-  observer.observe(sns);
-
-});
-
-// ============================
-// 文字はね
-// ============================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const captions = document.querySelectorAll(".caption-title");
-
-  captions.forEach(title => {
-
-    // ① 文字を分解
-    const text = title.textContent.trim();
-    title.textContent = "";
-
-    text.split("").forEach((char, index) => {
-      const span = document.createElement("span");
-      span.textContent = char;
-      span.style.animationDelay = index * 0.08 + "s";
-      title.appendChild(span);
-    });
-
-    // ② スクロール監視
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-        }
-      });
-    }, {
-      threshold: 0.4   // ← ここ低めが安定
-    });
-
-    observer.observe(title);
-
-  });
-
-});
-// ============================
-// メンバー画像ばうんす
-// ============================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const subImages = document.querySelectorAll(".sub-img");
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-
-        // ① 右から登場
-        entry.target.classList.add("active");
-
-        // ② 少し後にふわふわ追加
-        setTimeout(() => {
-          entry.target.classList.add("float");
-        }, 800);
-
-        // ③ 1回だけで止める
-        observer.unobserve(entry.target);
-      }
-
-    });
-  }, { threshold: 0.3 });
-
-  subImages.forEach(img => observer.observe(img));
-
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const targets = document.querySelectorAll(".main-img, .sub-img");
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-
-        entry.target.classList.add("active");
-
-        observer.unobserve(entry.target);
-      }
-
-    });
-  }, { threshold: 0.3 });
-
-  targets.forEach(el => observer.observe(el));
 
 });
