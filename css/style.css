@@ -410,6 +410,7 @@ body::before {
   font-size: 32px;
   font-weight: 800;
   letter-spacing: 0.18em;
+  white-space: pre;
   color: #862125; /* メインのエンジ */
 
   background: linear-gradient(
