@@ -994,8 +994,7 @@ body::before {
 
 .contact-button {
   display: inline-block;
-  padding: 22px 90px;
-
+  padding: 22px 50px;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -1805,12 +1804,13 @@ body::before {
 }
 
 .kv-sns img {
-  width: 20px;
+  width: 40px;
 }
 
 .kv-sns a:hover {
   opacity: 0.6;
 }
+
 
 @media (max-width: 768px) {
   .member-kv-clean {
