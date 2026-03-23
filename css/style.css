@@ -902,7 +902,7 @@ body::before {
   bottom: 5%;
   right: 5%;
   width: 65%;
-  max-width: 250px;
+  max-width: clamp(180px, 30vw, 320px);
   transform: rotate(6deg); /* ← 向きも逆にすると自然 */
 }
 
@@ -923,24 +923,21 @@ body::before {
 }
 
 .kv-name {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  
   font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", sans-serif;
-  font-weight: 600;
+  font-weight: 3000;
+  font-size: clamp(24px, 6vw, 36px);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
 }
 
+/* 下のローマ字 */
 .kv-sub-en {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  padding-bottom: 10px;
-  
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", sans-serif;
-  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 3vw, 16px);
+  letter-spacing: 0.25em;
+  color: #862125;
+  position: relative;
+  padding-bottom: 25px;
 }
 
 .name-ja {
@@ -1888,15 +1885,6 @@ body::before {
 
 .kv-info {
   width: 100%;
-}
-
-.kv-name {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-size: 36px;
-  letter-spacing: 0.15em;
-  margin-bottom: 10px;
-  color: #222;
 }
 
 .kv-sub {
