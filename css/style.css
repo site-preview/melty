@@ -921,23 +921,27 @@ body::before {
   }
 
 }
-
+/* 日本語（左寄せ） */
 .kv-name {
   font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", sans-serif;
-  font-weight: 3000;
-  font-size: clamp(24px, 6vw, 36px);
-  letter-spacing: 0.06em;
-  margin-bottom: 4px;
+  font-weight: 700;
+  font-size: clamp(32px, 8vw, 48px);
+  letter-spacing: 0.1em;
+  color: #862125;
+  text-align: left;
 }
 
-/* 下のローマ字 */
+/* 英語（中央に見せる） */
 .kv-sub-en {
   font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   font-size: clamp(12px, 3vw, 16px);
-  letter-spacing: 0.25em;
+  letter-spacing: 0.4em;
   color: #862125;
-  position: relative;
-  padding-bottom: 25px;
+
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .name-ja {
