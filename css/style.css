@@ -967,8 +967,8 @@ body::before {
 }
 /* 日本語（左寄せ） */
 .kv-name {
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", sans-serif;
-  font-weight: 700;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 800;
   font-size: clamp(32px, 8vw, 48px);
   letter-spacing: 0.1em;
   color: #862125;
