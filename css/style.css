@@ -2266,6 +2266,12 @@ body::before {
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  .news-detail .newssite-title {
+    font-size: 16px;
+  }
+}
+
 /*policyページここから*/
 .policy-text {
   margin-top: 30px;
