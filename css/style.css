@@ -724,8 +724,21 @@ body::before {
 }
 
 .container-melty .readtext {
-  font-size: 16px;
-  letter-spacing: 0.5em;
+  font-size: 15px;
+  letter-spacing: 0.6em;
+  color: rgba(255,255,255,0.85);
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+.container-melty .readtext-cf {
+  font-size: 19px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.85);
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+.container-melty .readtext-cf-2 {
+  font-size: 14px;
+  letter-spacing: 0.3em;
   color: rgba(255,255,255,0.85);
   font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
 }
