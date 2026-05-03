@@ -447,10 +447,6 @@ body::before {
 
 }
 
-
-
-
-
 /*SNSアイコン並べ*/
 
 .sns-ellipse {
@@ -525,9 +521,6 @@ body::before {
 }
 
 /*フォント系*/
-
-
-
 
 .text {
   font-size: 16px;
@@ -1152,6 +1145,11 @@ body::before {
   align-items: center;
   padding: 30px;
 }
+.contact-section-cf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .contact-button {
   display: inline-block;
@@ -1177,6 +1175,7 @@ body::before {
   transition: all 0.35s ease;
 }
 
+
 .contact-button:hover {
   transform: translateY(-4px) scale(1.04);
 
@@ -1185,7 +1184,7 @@ body::before {
   box-shadow:
     0 18px 40px rgba(0,0,0,0.45),
     inset 0 0 16px rgba(255,255,255,0.5);
-}s
+}
 
 /* ホバーで押した感じ */
 .cta-box:hover {
@@ -1235,6 +1234,15 @@ body::before {
   margin: 0 auto;
   padding: 10px;
   border-radius: 8px;
+}
+
+.thumb-cf {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 /* 再生ボタン（丸） */
@@ -1823,8 +1831,6 @@ body::before {
   cursor: pointer;
 }
 
-
-
 /*メンバー紹介ページV2ここまで*/
 
 /*メンバー紹介ページのKV①ここから*/
@@ -1984,14 +1990,6 @@ body::before {
     padding: 40px 25px;
   }
 }
-
-
-
-
-
-
-
-
 
 /*メンバー紹介ページのKVここから*/
 
@@ -2268,7 +2266,7 @@ body::before {
 
 @media (max-width: 768px) {
   .news-detail .newssite-title {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
