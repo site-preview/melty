@@ -672,6 +672,12 @@ body::before {
   text-align: center;
 }
 
+.container-cf {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 /* メインロゴ */
 
 .container-melty .title-aboutme {
@@ -690,6 +696,25 @@ body::before {
 }
 
 .container-melty .title-aboutme.show {
+  opacity: 1;
+}
+
+.container-cf .title-aboutme {
+  font-size: clamp(56px, 9vw, 110px);
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: #fff;
+  margin-bottom: 24px;
+  position: relative;
+
+  line-height: 1.2;
+
+  opacity: 0;
+  transform: none; /* ←これ重要（動き消す） */
+  transition: opacity 2.3s ease; /* ←ゆっくりめが“じわっ”感 */
+}
+
+.container-cf .title-aboutme.show {
   opacity: 1;
 }
 
@@ -730,13 +755,13 @@ body::before {
   font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
 }
 
-.container-melty .readtext-cf {
+.container-cf .readtext-cf {
   font-size: 19px;
   letter-spacing: 0.2em;
   color: rgba(255,255,255,0.85);
   font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
 }
-.container-melty .readtext-cf-2 {
+.container-cf .readtext-cf-2 {
   font-size: 14px;
   letter-spacing: 0.3em;
   color: rgba(255,255,255,0.85);
