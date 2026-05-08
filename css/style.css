@@ -1402,8 +1402,16 @@ body::before {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 16px;
-  border: 3px solid #fff;
   box-shadow: 0 0 0 4px #FF0000; /* snsっぽい縁取り */
+}
+
+.x-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  box-shadow: 0 0 0 4px #000; /* snsっぽい縁取り */
 }
 
 
@@ -1463,6 +1471,21 @@ body::before {
 
 .youtube-link:hover {
   background: #C2185B;
+}
+
+.x-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #000;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.x-link:hover {
+  background: #000;
 }
 
 
