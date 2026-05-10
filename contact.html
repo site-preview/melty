@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/slick.min.js"></script>
-<title>MELty｜メルティ</title>　
+<title>MELty｜お問い合わせフォーム</title>　
 <link rel="icon" href="logo.ico">
 </head>
 
@@ -21,26 +21,39 @@
   <div class="contact-box">
     <h2 class="contact-title">CONTACT</h2>
 
-<form action="https://formspree.io/f/mojplegb" method="POST" class="contact-form">
-  
-      <div class="form-group">
+  <script type="text/javascript">
+    var submitted = false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+        onload="if(submitted){window.location='thanks.html';}"></iframe>
+
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScZPBJ1r1n0pbtnv1g6iJ5sbQPoWAztFZqVCeW3oml2oFZM4g/formResponse"
+      method="POST" class="contact-form"
+      target="hidden_iframe" 
+      onsubmit="submitted=true;">
+    
+    <div class="form-group">
         <label for="name">お名前</label>
-        <input type="text" id="name" name="name" required>
-      </div>
+        <input type="text" id="name" name="entry.1265734108" placeholder="お名前を入力してください" required>
+    </div>
 
-      <div class="form-group">
+    <div class="form-group">
+    <label for="email">お電話番号</label>
+    <input type="tel" id="tel" name="entry.1421068911" placeholder="お電話番号を入力してください" required>
+    </div>
+
+    <div class="form-group">
         <label for="email">メールアドレス</label>
-        <input type="email" id="email" name="email" required>
-      </div>
+        <input type="email" id="email" name="entry.800118917" placeholder="メールアドレスを入力してください" required>
+    </div>
 
-      <div class="form-group">
+    <div class="form-group">
         <label for="message">お問い合わせ内容</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-      </div>
+        <textarea id="message" name="entry.897466209" placeholder="お問い合わせ内容を入力してください" required></textarea>
+    </div>
 
-      <button type="submit" class="contact-btn">送信する</button>
-
-    </form>
+    <button type="submit" class="contact-btn">送信する</button>
+</form>
   </div>
 </section>
 
